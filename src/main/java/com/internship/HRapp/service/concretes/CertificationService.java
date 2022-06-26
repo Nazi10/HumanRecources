@@ -68,11 +68,11 @@ public class CertificationService implements CertificationServiceInterface {
     @Override
     public void editCertification(CertificationDto certificationDto) {
         Certification certification = certificationRepo.getById(certificationDto.getCertificationID());
-        certification.setCertificationName(certificationDto.getCertification_name());
-        certification.setCertificationYear(certificationDto.getCertification_year());
-        certification.setExpirationDate(certificationDto.getExpiration_date());
-        certification.setReleasingAuthority(certificationDto.getReleasing_authority());
-        certification.setLinkOfCertification(certificationDto.getLink_of_certification());
+        certification.setCertificationName(certificationDto.getCertificationName());
+        certification.setCertificationYear(certificationDto.getCertificationYear());
+        certification.setExpirationDate(certificationDto.getExpirationDate());
+        certification.setReleasingAuthority(certificationDto.getReleasingAuthority());
+        certification.setLinkOfCertification(certificationDto.getLinkOfCertification());
         certificationRepo.save(certification);
     }
 }

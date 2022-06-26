@@ -65,9 +65,9 @@ public class PersonalFileService implements PersonalFileInterface {
     public PersonalFileDTO editPersonalFile(PersonalFileDTO personalFileDto) {
         PersonalFile updatedPersonalFile = personalFileRepository.getById(personalFileDto.getPersonalFileId());
         updatedPersonalFile.setDegree(personalFileDto.getDegree());
-        updatedPersonalFile.setIdCard(personalFileDto.getId_card());
+        updatedPersonalFile.setIdCard(personalFileDto.getIdCard());
         updatedPersonalFile.setProfilePicture(personalFileDto.getProfilePicture());
-        updatedPersonalFile.setWorkingSkills(personalFileDto.getWorking_skills());
+        updatedPersonalFile.setWorkingSkills(personalFileDto.getWorkingSkills());
         return personalFileMapper.modeltoDto(updatedPersonalFile);
     }
 }

@@ -2,12 +2,10 @@ package com.internship.HRapp.service.concretes;
 
 import com.internship.HRapp.dto.loginDto.AuthResponseDTO;
 import com.internship.HRapp.dto.loginDto.UserLoginDTO;
-import com.internship.HRapp.dto.projectsDto.ProjectAssignDTO;
 import com.internship.HRapp.dto.roleDto.AssignRoleDTO;
 import com.internship.HRapp.dto.roleDto.UpdateRoleDTO;
 import com.internship.HRapp.dto.roleDto.UpdateUsersRoleDto;
 import com.internship.HRapp.dto.userDto.*;
-import com.internship.HRapp.entity.Projects;
 import com.internship.HRapp.entity.Role;
 import com.internship.HRapp.entity.User;
 import com.internship.HRapp.mapper.ProjectsMapper;
@@ -130,27 +128,9 @@ public class UserServiceImpl implements UserServiceInterface {
         usersRepo.save(user);
         return usersMapper.toDTORole(usersRepo.getById(userId));
     }
-
-    @Override
-    public ProjectAssignDTO assignProjectToUser(String username, UUID projectId) {
-        User user = usersRepo.getByUsername(username);
-        Projects project = projectsMapper.dtoToEntity(projectsService.getProjectById(projectId));
-        user.getProjects().add(project);
-        usersRepo.save(user);
-        return usersMapper.toDTOProject(usersRepo.getByUsername(username));
-    }
-
     @Override
     public UserUpdateDTO getWholeUserById(UUID userId) {
         return usersMapper.toDTOUpdate(usersRepo.getById(userId));
-    }
-
-    @Override
-    public ProjectAssignDTO removeProjectFromUser(UUID userId, UUID projectId) {
-        User user = usersRepo.getById(userId);
-        user.getProjects().removeIf(project -> project.getProjectId().equals(projectId));
-        usersRepo.save(user);
-        return usersMapper.toDTOProject(usersRepo.getById(userId));
     }
 
     @Override
